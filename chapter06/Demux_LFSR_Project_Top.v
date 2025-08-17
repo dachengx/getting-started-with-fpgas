@@ -14,13 +14,13 @@ module Demux_LFSR_Project_Top (
     .i_Enable(1'b1),
     .o_Toggle(w_Counter_Toggle)
   );
-	Demux_1_To_4 Demux_Inst (
-		.i_Data(w_Counter_Toggle),
-		.i_Sel0(i_Switch_1),
-		.i_Sel1(i_Switch_2),
-		.o_Data0(o_LED_1),
-		.o_Data1(o_LED_2),
-		.o_Data2(o_LED_3),
-		.o_Data3(o_LED_4)
-	);
+  Demux_1_To_4 Demux_Inst (
+    .i_Data(w_Counter_Toggle),
+    .i_Sel0(i_Switch_1),
+    .i_Sel1(i_Switch_2),
+    .o_Data0(o_LED_1),
+    .o_Data1(o_LED_2),
+    .o_Data2(o_LED_3),
+    .o_Data3(o_LED_4)
+  );
 endmodule
