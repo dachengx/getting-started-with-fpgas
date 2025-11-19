@@ -1,24 +1,28 @@
-module UART_RX_To_7_Seg_Top
-(
-  input i_Clk,      // Main clock
-  input i_UART_RX,  // UART RX data
-  output o_Segment1_A,
-  output o_Segment1_B,
-  output o_Segment1_C,
-  output o_Segment1_D,
-  output o_Segment1_E,
-  output o_Segment1_F,
-  output o_Segment1_G,
-  output o_Segment2_A,
-  output o_Segment2_B,
-  output o_Segment2_C,
-  output o_Segment2_D,
-  output o_Segment2_E,
-  output o_Segment2_F,
-  output o_Segment2_G
-);
+module UART_Loopback_Top
+  (
+    input  i_Clk,      // Main clock
+    input  i_UART_RX,  // UART RX data
+    output o_UART_TX,  // UART TX data
+    // Segement1 is upper digit, Segement2 is lower digit
+    output o_Segment1_A,
+    output o_Segment1_B,
+    output o_Segment1_C,
+    output o_Segment1_D,
+    output o_Segment1_E,
+    output o_Segment1_F,
+    output o_Segment1_G,
+    output o_Segment2_A,
+    output o_Segment2_B,
+    output o_Segment2_C,
+    output o_Segment2_D,
+    output o_Segment2_E,
+    output o_Segment2_F,
+    output o_Segment2_G 
+  );
+
   wire w_RX_DV;
   wire [7:0] w_RX_Byte;
+  wire w_TX_Active, w_TX_Serial;
 
   wire w_Segment1_A, w_Segment2_A;
   wire w_Segment1_B, w_Segment2_B;
@@ -29,12 +33,27 @@ module UART_RX_To_7_Seg_Top
   wire w_Segment1_G, w_Segment2_G;
 
   // 25,000,000 / 115,200 = 217
-  UART_RX #(.CLKS_PER_BIT(217)) UART_RX_Inst (
+  UART_RX #(.CLKS_PER_BIT(217)) UART_RX_Inst
+  (
     .i_Clock(i_Clk),
     .i_RX_Serial(i_UART_RX),
     .o_RX_DV(w_RX_DV),
     .o_RX_Byte(w_RX_Byte)
   );
+
+  UART_TX #(.CLKS_PER_BIT(217)) UART_TX_Inst
+  (
+    .i_Rst_L(1'b1),         // Keep TX out of reset
+    .i_Clock(i_Clk),
+    .i_TX_DV(w_RX_DV),      // Pass RX to TX module
+    .i_TX_Byte(w_RX_Byte),  // Pass RX to TX module
+    .o_TX_Active(w_TX_Active),
+    .o_TX_Serial(w_TX_Serial),
+    .o_TX_Done()
+  );
+
+  // Drive UART line high when transmitter is not active
+  assign o_UART_TX = w_TX_Active ? w_TX_Serial : 1'b1;
 
   // Binary to 7-segment converter for upper digit
   Binary_To_7Segment SevenSeg1_Inst (
