@@ -36,3 +36,16 @@ set_io o_Segment2_G 96
 # UART Outputs
 set_io i_UART_RX 73
 set_io o_UART_TX 74
+
+# VGA Outputs
+set_io o_VGA_HSync 26
+set_io o_VGA_VSync 27
+set_io o_VGA_Red_0 36
+set_io o_VGA_Red_1 37
+set_io o_VGA_Red_2 40
+set_io o_VGA_Grn_0 29
+set_io o_VGA_Grn_1 30
+set_io o_VGA_Grn_2 33
+set_io o_VGA_Blu_0 28
+set_io o_VGA_Blu_1 41
+set_io o_VGA_Blu_2 42
