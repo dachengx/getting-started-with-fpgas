@@ -8,7 +8,7 @@ entity UART_RX_To_7_Seg_Top is
     -- UART RX data
     i_UART_RX : in std_logic;
 
-    -- Segment1 is upper digit, Segment2 in lower digit
+    -- Segment1 is the upper digit, Segment2 is the lower digit
     o_Segment1_A : out std_logic;
     o_Segment1_B : out std_logic;
     o_Segment1_C : out std_logic;

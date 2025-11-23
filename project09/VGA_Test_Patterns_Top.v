@@ -129,7 +129,7 @@ module VGA_Test_Patterns_Top
   assign o_Segment2_G = ~w_Segment2_G;
 
   // VGA test patterns
-  // Purpose:register test pattern from UART when DV pulses is seen
+  // Purpose: Register a test pattern from UART when a DV pulse is seen.
   // Only least significant 4 bits are needed from the whole byte.
   always @(posedge i_Clk)
   begin

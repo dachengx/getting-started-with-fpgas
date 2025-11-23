@@ -62,7 +62,7 @@ module VGA_Sync_Porch
     .o_Row_Count(w_Row_Count)
   );
 
-  // Purpose: modifies the HSync and VSync signals to include From/Back Porch
+  // Purpose: modify the HSync and VSync signals to include front/back porch
   always @(posedge i_Clk)
   begin
     if ((w_Col_Count < FRONT_PORCH_HORZ + ACTIVE_COLS) || (w_Col_Count > TOTAL_COLS - BACK_PORCH_HORZ - 1))
