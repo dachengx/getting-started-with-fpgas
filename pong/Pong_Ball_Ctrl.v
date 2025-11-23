@@ -1,8 +1,8 @@
 module Pong_Ball_Ctrl
   #(
-    parameter c_GAME_WIDTH = 40,
+    parameter c_GAME_WIDTH  = 40,
     parameter c_GAME_HEIGHT = 30,
-    parameter c_BALL_SPEED = 1250000  // Move per pong game unit every 50 ms
+    parameter c_BALL_SPEED  = 1250000  // Move per pong game unit every 50 ms
   )
   (
     input i_Clk,
@@ -18,6 +18,17 @@ module Pong_Ball_Ctrl
   reg [$clog2(c_GAME_HEIGHT)-1:0] r_Ball_Y_Prev = 0;
   reg [$clog2(c_BALL_SPEED)-1:0]  r_Ball_Count = 0;
 
+  // Simple 6-bit LFSR to generate random starting direction
+  // Number of possible state is 2^6-1 = 63 states, so the randomization
+  // is not symetrical. But good enough for this purpose.
+  reg [5:0] r_LFSR;
+  wire w_XNOR;
+  always @(posedge i_Clk)
+  begin
+    r_LFSR <= {r_LFSR[4:0], w_XNOR};
+  end
+  assign w_XNOR = r_LFSR[5] ^~ r_LFSR[4];
+
   always @(posedge i_Clk)
   begin
     // IF the game is not active, ball stays in the middle of
@@ -26,8 +37,8 @@ module Pong_Ball_Ctrl
     begin
       o_Ball_X      <= c_GAME_WIDTH / 2;
       o_Ball_Y      <= c_GAME_HEIGHT / 2;
-      r_Ball_X_Prev <= c_GAME_WIDTH / 2;
-      r_Ball_Y_Prev <= c_GAME_HEIGHT / 2;
+      r_Ball_X_Prev <= c_GAME_WIDTH / 2 + (r_LFSR[0] ? 1 : -1);
+      r_Ball_Y_Prev <= c_GAME_HEIGHT / 2 + (r_LFSR[1] ? 1 : -1);
     end
 
     // Update the ball counter continuously. Ball movement
