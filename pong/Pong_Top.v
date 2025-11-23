@@ -18,6 +18,9 @@ module Pong_Top
     input i_Paddle_Dn_P1,
     input i_Paddle_Up_P2,
     input i_Paddle_Dn_P2,
+    // Player 1 and 2 score outputs
+    output reg [3:0] o_P1_Score,
+    output reg [3:0] o_P2_Score,
     // Output video
     output reg o_HSync,
     output reg o_VSync,
@@ -53,9 +56,6 @@ module Pong_Top
   wire w_Draw_Ball, w_Draw_Any;
   wire [$clog2(c_GAME_WIDTH)-1:0] w_Ball_X;
   wire [$clog2(c_GAME_HEIGHT)-1:0] w_Ball_Y;
-
-  reg [3:0] r_P1_Score = 0;
-  reg [3:0] r_P2_Score = 0;
 
   // Divided version of the row/col counters
   // Allows us to make the board 40x30
@@ -162,24 +162,24 @@ module Pong_Top
 
       P1_WINS:
       begin
-        if (r_P1_Score == c_SCORE_LIMIT-1)
-          r_P1_Score <= 0;
+        if (o_P1_Score == c_SCORE_LIMIT)
+          o_P1_Score <= 0;
         else
         begin
-          r_P1_Score <= r_P1_Score + 1;
-          r_SM_Main <= CLEANUP;
+          o_P1_Score <= o_P1_Score + 1;
         end
+        r_SM_Main <= CLEANUP;
       end
 
       P2_WINS:
       begin
-        if (r_P2_Score == c_SCORE_LIMIT-1)
-          r_P2_Score <= 0;
+        if (o_P2_Score == c_SCORE_LIMIT)
+          o_P2_Score <= 0;
         else
         begin
-          r_P2_Score <= r_P2_Score + 1;
-          r_SM_Main <= CLEANUP;
+          o_P2_Score <= o_P2_Score + 1;
         end
+        r_SM_Main <= CLEANUP;
       end
 
       CLEANUP:
