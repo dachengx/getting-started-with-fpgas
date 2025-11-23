@@ -11,8 +11,8 @@ module VGA_Sync_Pulses
     input            i_Clk,
     output           o_HSync,
     output           o_VSync,
-    output reg [9:0] o_Col_Count = 0,
-    output reg [9:0] o_Row_Count = 0
+    output reg [$clog2(TOTAL_COLS)-1:0] o_Col_Count = 0,
+    output reg [$clog2(TOTAL_ROWS)-1:0] o_Row_Count = 0
   );
 
   always @(posedge i_Clk)

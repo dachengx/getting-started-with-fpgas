@@ -37,6 +37,10 @@ module VGA_Test_Patterns_Top
   parameter c_TOTAL_ROWS  = 525;
   parameter c_ACTIVE_COLS = 640;
   parameter c_ACTIVE_ROWS = 480;
+  parameter c_FRONT_PORCH_HORZ = 16;
+  parameter c_BACK_PORCH_HORZ  = 48;
+  parameter c_FRONT_PORCH_VERT = 10;
+  parameter c_BACK_PORCH_VERT  = 33;
 
   wire w_RX_DV;
   wire [7:0] w_RX_Byte;
@@ -58,7 +62,7 @@ module VGA_Test_Patterns_Top
   wire [c_VIDEO_WIDTH-1:0] w_Blu_Video_TP, w_Blu_Video_Porch;
 
   // 25,000,000 // 115,200 = 217
-  UART_RX #(.CLKS_PER_BIT(217)) UART_RX_inst
+  UART_RX #(.CLKS_PER_BIT(217)) UART_RX_Inst
   (
     .i_Clock(i_Clk),
     .i_RX_Serial(i_UART_RX),
@@ -68,6 +72,7 @@ module VGA_Test_Patterns_Top
 
   UART_TX #(.CLKS_PER_BIT(217)) UART_TX_Inst
   (
+    .i_Rst_L(1'b1),         // Keep TX out of reset
     .i_Clock(i_Clk),
     .i_TX_DV(w_RX_DV),
     .i_TX_Byte(w_RX_Byte),
@@ -152,8 +157,8 @@ module VGA_Test_Patterns_Top
   Test_Pattern_Gen
   #(
     .VIDEO_WIDTH(c_VIDEO_WIDTH),
-    .TOTAL_COLS(c_ACTIVE_COLS),
-    .TOTAL_ROWS(c_ACTIVE_ROWS),
+    .TOTAL_COLS(c_TOTAL_COLS),
+    .TOTAL_ROWS(c_TOTAL_ROWS),
     .ACTIVE_COLS(c_ACTIVE_COLS),
     .ACTIVE_ROWS(c_ACTIVE_ROWS)
   ) Test_Pattern_Gen_Inst
@@ -175,7 +180,11 @@ module VGA_Test_Patterns_Top
     .TOTAL_COLS(c_TOTAL_COLS),
     .TOTAL_ROWS(c_TOTAL_ROWS),
     .ACTIVE_COLS(c_ACTIVE_COLS),
-    .ACTIVE_ROWS(c_ACTIVE_ROWS)
+    .ACTIVE_ROWS(c_ACTIVE_ROWS),
+    .FRONT_PORCH_HORZ(c_FRONT_PORCH_HORZ),
+    .BACK_PORCH_HORZ(c_BACK_PORCH_HORZ),
+    .FRONT_PORCH_VERT(c_FRONT_PORCH_VERT),
+    .BACK_PORCH_VERT(c_BACK_PORCH_VERT)
   ) VGA_Sync_Porch_Inst
   (
     .i_Clk(i_Clk),

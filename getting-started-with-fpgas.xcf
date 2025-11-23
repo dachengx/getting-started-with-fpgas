@@ -17,9 +17,9 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project1_Switches_And_LEDs/Project1_Switches_And_LEDs_Implmnt/sbt/outputs/bitmap/Switches_To_LEDs_bitmap.bin</File>
-			<FileTime>07/09/25 12:38:50</FileTime>
-			<JedecChecksum>0xAE08</JedecChecksum>
+			<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project9_VGA_Test_Patterns_Top/Project9_VGA_Test_Patterns_Top_Implmnt/sbt/outputs/bitmap/VGA_Test_Patterns_Top_bitmap.bin</File>
+			<FileTime>11/23/25 01:09:33</FileTime>
+			<JedecChecksum>0xD23C</JedecChecksum>
 			<Operation>SPI Flash Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
@@ -61,11 +61,11 @@
 					<IDCode>0x10</IDCode>
 					<Package>8-pin SOIC</Package>
 					<Operation>SPI Flash Erase,Program,Verify</Operation>
-					<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project1_Switches_And_LEDs/Project1_Switches_And_LEDs_Implmnt/sbt/outputs/bitmap/Switches_To_LEDs_bitmap.bin</File>
+					<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project9_VGA_Test_Patterns_Top/Project9_VGA_Test_Patterns_Top_Implmnt/sbt/outputs/bitmap/VGA_Test_Patterns_Top_bitmap.bin</File>
 					<AddressBase>0x00000000</AddressBase>
 					<EndAddress>0x00008000</EndAddress>
 					<DeviceSize>1</DeviceSize>
-					<DataSize>32299</DataSize>
+					<DataSize>32300</DataSize>
 					<NumberOfDevices>1</NumberOfDevices>
 					<ReInitialize value="FALSE"/>
 				</Device>
@@ -101,7 +101,7 @@
 	</ProjectOptions>
 	<CableOptions>
 		<CableName>USB2</CableName>
-		<PortAdd>FTUSB-1</PortAdd>
-		<USBID>Dual RS232-HS A Location 0001 Serial A</USBID>
+		<PortAdd>FTUSB-0</PortAdd>
+		<USBID>Dual RS232-HS A Location 0000 Serial A</USBID>
 	</CableOptions>
 </ispXCF>

@@ -47,10 +47,10 @@ module Test_Pattern_Gen
   wire [VIDEO_WIDTH-1:0] Pattern_Blu[0:15];
 
   // Make these unsigned counters (always positive)
-  wire [9:0] w_Col_Count;
-  wire [9:0] w_Row_Count;
+  wire [$clog2(TOTAL_COLS)-1:0] w_Col_Count;
+  wire [$clog2(TOTAL_ROWS)-1:0] w_Row_Count;
 
-  wire [6:0] w_Bar_Width;
+  wire [$clog2(ACTIVE_COLS/8)-1:0] w_Bar_Width;
   wire [2:0] w_Bar_Select;
 
   Sync_To_Count

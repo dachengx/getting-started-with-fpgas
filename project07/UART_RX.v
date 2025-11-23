@@ -23,7 +23,7 @@ module UART_RX
   parameter RX_STOP_BIT  = 3'b011;
   parameter CLEANUP      = 3'b100;
 
-  reg [7:0] r_Clock_Count = 0;
+  reg [$clog2(CLKS_PER_BIT)-1:0] r_Clock_Count = 0;
   reg [2:0] r_Bit_Index   = 0;  // 8 bits total
   reg [7:0] r_RX_Byte     = 0;
   reg       r_RX_DV       = 0;
