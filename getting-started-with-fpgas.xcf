@@ -17,9 +17,9 @@
 				<BScanLen>1</BScanLen>
 				<BScanVal>0</BScanVal>
 			</Bypass>
-			<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project9_VGA_Test_Patterns_Top/Project9_VGA_Test_Patterns_Top_Implmnt/sbt/outputs/bitmap/VGA_Test_Patterns_Top_bitmap.bin</File>
-			<FileTime>11/23/25 03:35:22</FileTime>
-			<JedecChecksum>0xED51</JedecChecksum>
+			<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/PONG/PONG_Implmnt/sbt/outputs/bitmap/Project_Pong_Top_bitmap.bin</File>
+			<FileTime>11/23/25 15:56:36</FileTime>
+			<JedecChecksum>0xAB77</JedecChecksum>
 			<Operation>SPI Flash Erase,Program,Verify</Operation>
 			<Option>
 				<SVFVendor>JTAG STANDARD</SVFVendor>
@@ -61,7 +61,7 @@
 					<IDCode>0x10</IDCode>
 					<Package>8-pin SOIC</Package>
 					<Operation>SPI Flash Erase,Program,Verify</Operation>
-					<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/Project9_VGA_Test_Patterns_Top/Project9_VGA_Test_Patterns_Top_Implmnt/sbt/outputs/bitmap/VGA_Test_Patterns_Top_bitmap.bin</File>
+					<File>C:/lscc/iCEcube2.2020.12/sbt_backend/Projects/PONG/PONG_Implmnt/sbt/outputs/bitmap/Project_Pong_Top_bitmap.bin</File>
 					<AddressBase>0x00000000</AddressBase>
 					<EndAddress>0x00008000</EndAddress>
 					<DeviceSize>1</DeviceSize>
