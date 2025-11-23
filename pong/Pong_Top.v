@@ -99,6 +99,7 @@ module Pong_Top
   ) P1_Inst
   (
     .i_Clk(i_Clk),
+    .i_Game_Active(w_Game_Active),
     .i_Col_Count_Div(w_Col_Count_Div),
     .i_Row_Count_Div(w_Row_Count_Div),
     .i_Paddle_Up(i_Paddle_Up_P1),
@@ -118,6 +119,7 @@ module Pong_Top
   ) P2_Inst
   (
     .i_Clk(i_Clk),
+    .i_Game_Active(w_Game_Active),
     .i_Col_Count_Div(w_Col_Count_Div),
     .i_Row_Count_Div(w_Row_Count_Div),
     .i_Paddle_Up(i_Paddle_Up_P2),

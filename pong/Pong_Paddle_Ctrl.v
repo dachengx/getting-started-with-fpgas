@@ -8,6 +8,7 @@ module Pong_Paddle_Ctrl
   )
   (
     input i_Clk,
+    input i_Game_Active,
     input [$clog2(c_GAME_WIDTH)-1:0]       i_Col_Count_Div,
     input [$clog2(c_GAME_HEIGHT)-1:0]      i_Row_Count_Div,
     input i_Paddle_Up,
@@ -26,6 +27,12 @@ module Pong_Paddle_Ctrl
 
   always @(posedge i_Clk)
   begin
+    if (i_Game_Active == 1'b0)
+    begin
+      o_Paddle_Y      <= (c_GAME_HEIGHT - c_PADDLE_HEIGHT) / 2;
+      r_Paddle_Count  <= 0;
+    end
+
     if (w_Paddle_Count_En == 1'b1)
     begin
       if (r_Paddle_Count == c_PADDLE_SPEED)
