@@ -45,7 +45,7 @@ module UART_RX
             r_SM_Main <= IDLE;
         end  // case: IDLE
 
-      // Check middle of start bit to make sure it's strll low
+      // Check middle of start bit to make sure it's still low
       RX_START_BIT:
         begin
           if (r_Clock_Count == (CLKS_PER_BIT-1)/2)
@@ -79,7 +79,7 @@ module UART_RX
             r_RX_Byte[r_Bit_Index] <= i_RX_Serial;
 
             // Check if we have received all bits
-            if (r_Bit_Index <7)
+            if (r_Bit_Index < 7)
             begin
               r_Bit_Index <= r_Bit_Index + 1;
               r_SM_Main   <= RX_DATA_BITS;

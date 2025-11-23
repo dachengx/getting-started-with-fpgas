@@ -98,7 +98,7 @@ module Test_Pattern_Gen
   // Pattern 4: checkerboard white/black
   assign Pattern_Red[4] = w_Col_Count[5] ^ w_Row_Count[5] ? {VIDEO_WIDTH{1'b1}} : 0;
   assign Pattern_Grn[4] = Pattern_Red[4];
-  assign Pattern_Grn[4] = Pattern_Red[4];
+  assign Pattern_Blu[4] = Pattern_Red[4];
 
   // Pattern 5: color bars
   // Divides active area into 8 equal bars and colors them accordingly
